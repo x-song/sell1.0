@@ -21,6 +21,7 @@ let router = new VueRouter({
 router.map({
 	'/':{
 		component:goods
+		
 	},
 	'/goods':{
 		component:goods

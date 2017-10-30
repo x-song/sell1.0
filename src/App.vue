@@ -44,10 +44,10 @@ export default {
 </script>
 
 
-<style lang="scss">
+<style lang="scss" scoped>
   @import 'common/sass/mixin.scss';
   
-
+ 
   .tab {
     display: flex;
     width: 100%;

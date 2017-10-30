@@ -1,7 +1,6 @@
 <template>
   <div class="star" :class="starType">
       <span v-for="itemClass in itemClasses" :class="itemClass" track-by="$index" class="star-item"></span>
-    
   </div>
 </template>
 
@@ -37,7 +36,7 @@ export default {
 			if(hasDecimal){
 				result.push(CLS_HALF);
 				
-			}
+		 	}
 			while(result.length < LENGTH){
 				result.push(CLS_OFF);
 			}
@@ -50,7 +49,7 @@ export default {
 </script>
 
 
-<style lang="scss">
+<style lang="scss" scoped>
 @import '../../common/sass/mixin.scss';
 	.star{
 		.star-item{

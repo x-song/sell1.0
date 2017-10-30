@@ -17,7 +17,7 @@
 		  <li v-for="item in goods" class="food-list food-list-hook">
 			  <h1 class="title">{{item.name}}</h1>
 			  <ul>
-				  <li v-for="food in item.foods" class="food-item">
+				  <li @click="selectFood(food,$event)" v-for="food in item.foods" class="food-item">
 				  	<div class="icon">
 				  		<img :src="food.icon" width="57" height="57" alt="">
 				  	</div>
@@ -45,12 +45,14 @@
       <shopcart v-ref:shopcart :select-foods="selectFoods" :delivery-price="seller.deliveryPrice" :min-price="seller.minPrice"></shopcart>
     
   </div>
+  <food :food="selectedFood" v-ref:food></food>
 </template>
 
 <script>
 import BScroll from 'better-scroll';
-import shopcart from 'components/shopcart/shopcart'
-import cartcontrol from 'components/cartcontrol/cartcontrol'
+import shopcart from 'components/shopcart/shopcart';
+import food from 'components/food/food';
+import cartcontrol from 'components/cartcontrol/cartcontrol';
 
 const ERR_OK = 0;
 export default {
@@ -63,7 +65,8 @@ export default {
 		return {
 			goods:[],
 			listHeight:[],
-			scrollY:0
+			scrollY:0,
+			selectedFood:{}
 		}
 	},
 	computed:{
@@ -91,7 +94,6 @@ export default {
 					}
 				})
 			})
-			
 			return foods;
 		}
 
@@ -102,6 +104,7 @@ export default {
 	        response = response.body;
 	        if(response.errno == ERR_OK){
 	          this.goods = response.data;
+
 	          this.$nextTick( ()=>{
 	          	this._initScroll();
 	          	this._calculateHeight();
@@ -127,6 +130,14 @@ export default {
 			
 
 
+		},
+		 selectFood(food,event) {
+			if(!event._constructed){
+				return ;
+			}
+			this.selectedFood = food;
+			this.$refs.food.show();
+			// console.log(this.$refs)
 		},
 		_initScroll(){
 			this.menuScroll  = new BScroll(this.$els.menuWrapper,{
@@ -162,7 +173,8 @@ export default {
 	},
 	components:{
 		shopcart,
-		cartcontrol
+		cartcontrol,
+		food
 	},
 	events:{
 		'cart.add'(target){
@@ -174,7 +186,7 @@ export default {
 </script>
 
 
-<style lang="scss">
+<style lang="scss" scoped>
  @import '../../common/sass/mixin.scss';
 	.goods{
 		display: flex;

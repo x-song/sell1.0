@@ -21,7 +21,7 @@ export default {
 </script>
 
 
-<style lang="scss">
+<style lang="scss" scoped>
  .title{
     display: flex;
     width:80%;
