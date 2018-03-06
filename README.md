@@ -15,7 +15,7 @@ npm run dev
 npm run build
 
 # 线上地址
-https://x-song.github.io/sell1.0/
+http://www.baidu.com
 
 
 
