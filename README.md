@@ -14,6 +14,6 @@ npm run dev
 # build for production with minification
 npm run build
 
-线上地址 ： <a href="https://x-song.github.io/sell1.0/">https://x-song.github.io/sell1.0/</a>
+[线上地址](https://x-song.github.io/sell1.0/) 
 
 
